@@ -1,0 +1,80 @@
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+
+#git_repository(
+#    name = "rules_terraform",
+#    commit = "48cfbfabb8c7aa887db649ce82ad47716f3d682f",
+#    remote = "https://github.com/ceason/rules_terraform.git",
+#)
+#
+git_repository(
+    name = "io_bazel_rules_go",
+    commit = "b463dbfef16e07d235800267f1709acf65808396",
+    remote = "https://github.com/bazelbuild/rules_go.git",
+)
+
+#git_repository(
+#    name = "io_bazel_rules_docker",
+#    commit = "1d64e07913281467a7866cc0c91ff9fd241937cc",
+#    remote = "https://github.com/bazelbuild/rules_docker.git",
+#)
+
+git_repository(
+    name = "bazel_gazelle",
+    commit = "422ea009aca276245ac5152e5d598d1e2c3e2813",
+    remote = "https://github.com/bazelbuild/bazel-gazelle.git",
+)
+
+git_repository(
+    name = "com_github_johnynek_bazel_deps",
+    commit = "a07cf5106fe84ccfc39997b13a877f89c1ebe0f5",
+    remote = "https://github.com/ceason/bazel-deps.git",
+)
+
+git_repository(
+    name = "io_bazel_rules_scala",
+    commit = "4be50865a332aef46c46c94b345c320c3353e9e1",
+    remote = "https://github.com/bazelbuild/rules_scala.git",
+)
+
+load("//3rdparty:jvm.bzl", "maven_dependencies")
+
+maven_dependencies()
+
+load("@io_bazel_rules_go//go:def.bzl", "go_register_toolchains", "go_rules_dependencies")
+
+go_rules_dependencies()
+
+go_register_toolchains()
+
+load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
+
+scala_repositories()
+
+load("@io_bazel_rules_scala//scala_proto:scala_proto.bzl", "scala_proto_repositories")
+
+scala_proto_repositories()
+
+load("@io_bazel_rules_scala//scala:toolchains.bzl", "scala_register_toolchains")
+
+scala_register_toolchains()
+
+#load("@io_bazel_rules_docker//go:image.bzl", _go_image_repos = "repositories")
+#_go_image_repos()
+
+load("@com_github_johnynek_bazel_deps//:def.bzl", "bazeldeps_dependencies")
+
+bazeldeps_dependencies()
+
+load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
+
+gazelle_dependencies()
+
+go_repository(
+    name = "com_github_golang_dep",
+    importpath = "github.com/golang/dep",
+    tag = "v0.5.0",
+)
+
+#load("@rules_terraform//terraform:dependencies.bzl", "terraform_repositories")
+#terraform_repositories()
