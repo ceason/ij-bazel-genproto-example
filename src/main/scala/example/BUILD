@@ -10,14 +10,14 @@ scalapb_proto_library(
     ],
 )
 
-scala_binary(
-    name = "client",
-    srcs = ["Client.scala"],
-    main_class = "example.Client",
-    deps = [
-        ":helloworld_scalapb_proto",
-    ],
-)
+#scala_binary(
+#    name = "client",
+#    srcs = ["Client.scala"],
+#    main_class = "example.Client",
+#    deps = [
+#        ":helloworld_scalapb_proto",
+#    ],
+#)
 
 java_proto_library(
     name = "helloworld_java_proto",

@@ -8,7 +8,10 @@ import (
 func main() {
 	req := helloworld.HelloRequest{}
 
+	req.Name = "asdfwtfbbqsadfas"
+
 	var cc *grpc.ClientConn
 	client := helloworld.NewGreeterClient(cc)
+	client.SayHello()
 
 }
