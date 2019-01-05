@@ -1,17 +1,28 @@
 package main
 
 import (
+	"context"
 	"github.com/ceason/ij-bazel-genproto-example/proto/helloworld"
 	"google.golang.org/grpc"
 )
 
 func main() {
-	req := helloworld.HelloRequest{}
+
+	ctx := context.Background()
+
+
+	req := helloworld.HelloRequest{
+		Name: "chris",
+	}
 
 	req.Name = "asdfwtfbbqsadfas"
 
 	var cc *grpc.ClientConn
 	client := helloworld.NewGreeterClient(cc)
-	client.SayHello()
+	res, err := client.SayHello(ctx, &req)
+	if err != nil {
+		panic(err)
+	}
+	print(res.Message)
 
 }

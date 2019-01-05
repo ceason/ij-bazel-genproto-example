@@ -19,6 +19,9 @@ additional_languages:
   scala
   # typescript
 
-
 test_sources:
   */test/*
+
+
+# build_flags:
+#   --protocopt=--include_source_info

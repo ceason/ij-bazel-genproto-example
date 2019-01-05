@@ -1,6 +1,5 @@
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
-
 #git_repository(
 #    name = "rules_terraform",
 #    commit = "48cfbfabb8c7aa887db649ce82ad47716f3d682f",
@@ -33,7 +32,7 @@ git_repository(
 
 git_repository(
     name = "io_bazel_rules_scala",
-    commit = "4be50865a332aef46c46c94b345c320c3353e9e1",
+    commit = "326b4ce252c36aeff2232e241ff4bfd8d6f6e071",
     remote = "https://github.com/bazelbuild/rules_scala.git",
 )
 
