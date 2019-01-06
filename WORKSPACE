@@ -12,6 +12,12 @@ git_repository(
     remote = "https://github.com/bazelbuild/rules_go.git",
 )
 
+git_repository(
+    name = "io_grpc_grpc_java",
+    remote = "https://github.com/grpc/grpc-java.git",
+    tag = "v1.17.2",
+)
+
 #git_repository(
 #    name = "io_bazel_rules_docker",
 #    commit = "1d64e07913281467a7866cc0c91ff9fd241937cc",
@@ -36,6 +42,10 @@ git_repository(
     remote = "https://github.com/bazelbuild/rules_scala.git",
 )
 
+load("@io_grpc_grpc_java//:repositories.bzl", "grpc_java_repositories")
+
+grpc_java_repositories()
+
 load("//3rdparty:jvm.bzl", "maven_dependencies")
 
 maven_dependencies()
@@ -49,10 +59,6 @@ go_register_toolchains()
 load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
 
 scala_repositories()
-
-load("@io_bazel_rules_scala//scala_proto:scala_proto.bzl", "scala_proto_repositories")
-
-scala_proto_repositories()
 
 load("@io_bazel_rules_scala//scala:toolchains.bzl", "scala_register_toolchains")
 

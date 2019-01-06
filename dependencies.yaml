@@ -1,39 +1,59 @@
 options:
-  buildHeader: [
-    "load(\"@io_bazel_rules_scala//scala:scala_import.bzl\", \"scala_import\")",
-    "load(\"@io_bazel_rules_scala//scala:scala.bzl\", \"scala_library\", \"scala_binary\", \"scala_test\")"
-  ]
+  buildHeader:
+  - load("@io_bazel_rules_scala//scala:scala_import.bzl", "scala_import")
+  - load("@io_bazel_rules_scala//scala:scala.bzl", "scala_library", "scala_binary", "scala_test")
   languages: [ "java", "scala:2.11.11" ]
   resolverType: "coursier"
   resolvers:
-  - id: "mavencentral"
-    type: "default"
+  - id: mavencentral
+    type: default
     url: https://repo.maven.apache.org/maven2
-  - id: "jitpack"
-    type: "default"
-    url: "https://jitpack.io"
+  - id: jitpack
+    type: default
+    url: https://jitpack.io
   transitivity: exports
   versionConflictPolicy: highest
   strictVisibility: false
 
 dependencies:
+  org.slf4j:
+    slf4j-api:
+      lang: java
+      version: "1.7.25"
 
 replacements:
+  # grpc_java provided
+  io.grpc:
+    grpc-auth:     {lang: java, target: "@io_grpc_grpc_java//auth"}
+    grpc-core:     {lang: java, target: "@io_grpc_grpc_java//core"}
+    grpc-context:  {lang: java, target: "@io_grpc_grpc_java//context"}
+    grpc-netty:    {lang: java, target: "@io_grpc_grpc_java//netty"}
+    grpc-protobuf: {lang: java, target: "@io_grpc_grpc_java//protobuf"}
+    grpc-stub:     {lang: java, target: "@io_grpc_grpc_java//stub"}
+
+  # protobuf compiler provided libraries
+  com.google.protobuf:
+    protobuf-java:      {lang: java, target: "@com_google_protobuf//:protobuf_java"}
+    protobuf-java-util: {lang: java, target: "@com_google_protobuf//:protobuf_java_util"}
+
+  # rules_scala provided libraries
   org.scala-lang:
     scala-library:
       lang: scala/unmangled
-      target: "@io_bazel_rules_scala_scala_library//:io_bazel_rules_scala_scala_library"
+      target: "@io_bazel_rules_scala_scala_library"
     scala-reflect:
       lang: scala/unmangled
-      target: "@io_bazel_rules_scala_scala_reflect//:io_bazel_rules_scala_scala_reflect"
+      target: "@io_bazel_rules_scala_scala_reflect"
     scala-compiler:
       lang: scala/unmangled
-      target: "@io_bazel_rules_scala_scala_compiler//:io_bazel_rules_scala_scala_compiler"
-
+      target: "@io_bazel_rules_scala_scala_compiler"
   org.scala-lang.modules:
     scala-parser-combinators:
       lang: scala
-      target: "@io_bazel_rules_scala_scala_parser_combinators//:io_bazel_rules_scala_scala_parser_combinators"
+      target: "@io_bazel_rules_scala_scala_parser_combinators"
     scala-xml:
       lang: scala
-      target: "@io_bazel_rules_scala_scala_xml//:io_bazel_rules_scala_scala_xml"
+      target: "@io_bazel_rules_scala_scala_xml"
+
+
+

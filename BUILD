@@ -19,8 +19,8 @@ genrule(
     cmd = """cat <<'EOF' > $@
 #!/usr/bin/env bash
 set -euo pipefail
-execroot=$$(bazel info execution_root)
 cd "$$BUILD_WORKSPACE_DIRECTORY"
+execroot=$$(bazel info execution_root)
 $$execroot/$(location @com_github_golang_dep//cmd/dep) ensure
 $$execroot/$(location @bazel_gazelle//cmd/gazelle) update
 git add Gopkg.{lock,toml} vendor/. $$(find . -name BUILD -o -name BUILD.bazel)
