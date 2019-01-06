@@ -12,6 +12,12 @@ git_repository(
     remote = "https://github.com/bazelbuild/rules_go.git",
 )
 
+#git_repository(
+#    name = "com_google_protobuf",
+#    remote = "https://github.com/protocolbuffers/protobuf.git",
+#    tag = "v3.6.1.3",
+#)
+
 git_repository(
     name = "io_grpc_grpc_java",
     remote = "https://github.com/grpc/grpc-java.git",
