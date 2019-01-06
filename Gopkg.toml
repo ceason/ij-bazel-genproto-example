@@ -24,6 +24,17 @@
 #   go-tests = true
 #   unused-packages = true
 
+ignored = [
+  # these are provided by 'rules_go' and can safely be ignored (see https://github.com/bazelbuild/rules_go/blob/master/proto/core.rst#dependencies)
+  "github.com/google/protobuf*",
+  "github.com/golang/protobuf*",
+  "github.com/mwitkow/go-proto-validators*",
+  "github.com/gogo/protobuf*",
+  "golang.org/x/text*",
+  "golang.org/x/net*",
+  "google.golang.org/grpc*",
+  "google.golang.org/genproto*",
+]
 
 [prune]
   go-tests = true

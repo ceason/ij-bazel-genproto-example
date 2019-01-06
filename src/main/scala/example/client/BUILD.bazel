@@ -6,9 +6,9 @@ scala_binary(
     main_class = "example.client.Client",
     deps = [
         "//src/main/scala/example:helloworld_java_grpc",
-#        "//src/main/scala/example:helloworld_java_proto",
-#        "@com_google_protobuf//:protobuf_java",
-#        "@io_grpc_grpc_java//core",
-#        "@io_grpc_grpc_java//stub",
+        #        "//src/main/scala/example:helloworld_java_proto",
+        #        "@com_google_protobuf//:protobuf_java",
+        #        "@io_grpc_grpc_java//core",
+        #        "@io_grpc_grpc_java//stub",
     ],
 )

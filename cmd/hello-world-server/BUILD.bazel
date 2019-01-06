@@ -5,7 +5,10 @@ go_library(
     srcs = ["main.go"],
     importpath = "github.com/ceason/ij-bazel-genproto-example/cmd/hello-world-server",
     visibility = ["//visibility:private"],
-    deps = ["//proto/helloworld:go_default_library"],
+    deps = [
+        "//proto/helloworld:go_default_library",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
 )
 
 go_binary(

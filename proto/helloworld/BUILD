@@ -11,7 +11,7 @@ go_proto_library(
     name = "helloworld_go_proto",
     compilers = ["@io_bazel_rules_go//proto:go_grpc"],
     importpath = "github.com/ceason/ij-bazel-genproto-example/proto/helloworld",
-    proto = ":helloworld_proto",
+    proto = ":proto_helloworld_proto",
     visibility = ["//visibility:public"],
 )
 
@@ -19,5 +19,11 @@ go_library(
     name = "go_default_library",
     embed = [":helloworld_go_proto"],
     importpath = "github.com/ceason/ij-bazel-genproto-example/proto/helloworld",
+    visibility = ["//visibility:public"],
+)
+
+proto_library(
+    name = "proto_helloworld_proto",
+    srcs = ["helloworld.proto"],
     visibility = ["//visibility:public"],
 )
