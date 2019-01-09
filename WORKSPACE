@@ -20,8 +20,9 @@ git_repository(
 
 git_repository(
     name = "io_grpc_grpc_java",
-    remote = "https://github.com/grpc/grpc-java.git",
-    tag = "v1.17.2",
+    #tag = "v1.17.2",
+    commit = "a41606d8bc83ba4b5124f4022dc20f93ec972756",
+    remote = "https://github.com/ceason/grpc-java.git",
 )
 
 #git_repository(
@@ -48,7 +49,7 @@ git_repository(
     remote = "https://github.com/bazelbuild/rules_scala.git",
 )
 
-load("@io_grpc_grpc_java//:repositories.bzl", "grpc_java_repositories", "grpc_java_register_toolchains")
+load("@io_grpc_grpc_java//:repositories.bzl", "grpc_java_register_toolchains", "grpc_java_repositories")
 
 grpc_java_repositories()
 
