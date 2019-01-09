@@ -12,11 +12,11 @@ git_repository(
     remote = "https://github.com/bazelbuild/rules_go.git",
 )
 
-#git_repository(
-#    name = "com_google_protobuf",
-#    remote = "https://github.com/protocolbuffers/protobuf.git",
-#    tag = "v3.6.1.3",
-#)
+git_repository(
+    name = "com_google_protobuf",
+    remote = "https://github.com/protocolbuffers/protobuf.git",
+    tag = "v3.6.1.3",
+)
 
 git_repository(
     name = "io_grpc_grpc_java",
@@ -48,9 +48,11 @@ git_repository(
     remote = "https://github.com/bazelbuild/rules_scala.git",
 )
 
-load("@io_grpc_grpc_java//:repositories.bzl", "grpc_java_repositories")
+load("@io_grpc_grpc_java//:repositories.bzl", "grpc_java_repositories", "grpc_java_register_toolchains")
 
 grpc_java_repositories()
+
+grpc_java_register_toolchains()
 
 load("//3rdparty:jvm.bzl", "maven_dependencies")
 
