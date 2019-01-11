@@ -21,7 +21,7 @@ git_repository(
 git_repository(
     name = "io_grpc_grpc_java",
     #tag = "v1.17.2",
-    commit = "a41606d8bc83ba4b5124f4022dc20f93ec972756",
+    commit = "485895282216a64e56c56837279921e32f5dc824",
     remote = "https://github.com/ceason/grpc-java.git",
 )
 

@@ -1,5 +1,6 @@
 #load("@io_grpc_grpc_java//:java_grpc_library.bzl", "java_grpc_library")
-load("@io_grpc_grpc_java//:java_grpc_aspect.bzl", "java_grpc_library")
+#load("@io_grpc_grpc_java//:java_grpc_aspect.bzl", "java_grpc_library")
+load("@io_grpc_grpc_java//java_grpc_library:def.bzl", "java_grpc_library")
 load("@io_bazel_rules_scala//scala:scala.bzl", "scala_binary")
 
 java_proto_library(
