@@ -9,9 +9,6 @@ import proto.helloworld.{GreeterGrpc, HelloReply, HelloRequest}
   */
 object Server {
 
-  val host: String = "localhost"
-  val port: Int = 50051
-
   object GreeterImpl extends GreeterGrpc.GreeterImplBase {
     override def sayHello(request: HelloRequest, responseObserver: StreamObserver[HelloReply]): Unit = {
       println(s"Got a request!")
@@ -25,7 +22,7 @@ object Server {
 
   def main(args: Array[String]): Unit = {
 
-    val server = ServerBuilder.forPort(port)
+    val server = ServerBuilder.forPort(Config.port)
         .addService(GreeterImpl)
         .build()
 
@@ -36,7 +33,7 @@ object Server {
     }
 
     server.start()
-    println(s"Server started, listening on $port")
+    println(s"Server started, listening on ${Config.port}")
     server.awaitTermination()
   }
 

@@ -1,4 +1,5 @@
-build --protocopt=--include_source_info
+#build --protocopt=--include_source_info
+test --test_output=errors
 
 # allow users to set (or override) flags in this '.gitignore'd file
 try-import %workspace%/.bazelrc-local

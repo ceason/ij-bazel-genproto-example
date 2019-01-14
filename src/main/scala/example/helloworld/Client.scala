@@ -10,11 +10,8 @@ object Client {
 
   def main(args: Array[String]): Unit = {
 
-    val host = "localhost"
-    val port = 50051
-
     val channel = ManagedChannelBuilder
-        .forAddress(host, port)
+        .forAddress(Config.host, Config.port)
         .usePlaintext()
         .build
 
